@@ -1,0 +1,23 @@
+factory_version: "0.5"
+project:
+  id: drama-admin
+  product: Drama TikTok Minis
+  kind: React operations console
+context:
+  current_state: CONTEXT.md
+  instructions: AGENTS.md
+orchestration:
+  workspace: ../.factory/workspace.yaml
+commands:
+  test: npx pnpm@11.11.0 test
+  build: npx pnpm@11.11.0 build
+  verify: npx pnpm@11.11.0 verify
+risk:
+  public_api: true
+  data_migrations: false
+  production_data: false
+  external_side_effects: false
+authority:
+  local_changes: allowed
+  external_writes: prohibited
+  production_release: confirmation_required

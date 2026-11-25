@@ -1,0 +1,40 @@
+{
+  "name": "drama-admin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@11.11.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:staging": "tsc -b && vite build --mode staging && node scripts/prepare-static-deployment.mjs staging",
+    "build:production": "tsc -b && vite build --mode production && node scripts/prepare-static-deployment.mjs production",
+    "lint": "oxlint",
+    "test": "vitest run --pool=forks --maxWorkers=1",
+    "verify": "npm run lint && npm run test && npm run test:deploy && npm run build",
+    "preview": "vite preview",
+    "test:deploy": "node --test scripts/tests/*.node-test.mjs"
+  },
+  "dependencies": {
+    "@byteplus/uploader": "^1.1.3",
+    "@noble/hashes": "2.4.0",
+    "antd": "^6.5.1",
+    "dayjs": "^1.11.23",
+    "lucide-react": "^1.24.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "jsdom": "^29.1.1",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+.deploy
+*.local
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.staging
+!.env.production
+.playwright-cli/
+coverage/
+*.tsbuildinfo
+
+# 私有凭据与证书不进入源码基线。
+*.pem
+*.key
+*.p12
+*.pfx
+*.lic
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 本机界面验收截图不进入发布源码。
+output/playwright/

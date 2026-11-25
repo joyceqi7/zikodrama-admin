@@ -1,0 +1,815 @@
+:root {
+  color: #20212b;
+  background: #f7f8fa;
+  font-synthesis: none;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #f7f8fa;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.login-shell {
+  min-height: 100vh;
+  background: #f7f8fa;
+}
+
+.login-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(390px, 0.9fr);
+  min-height: 100vh;
+}
+
+.login-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100%;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 128px);
+  color: #252632;
+  background:
+    radial-gradient(circle at 75% 35%, rgb(122 103 255 / 9%), transparent 30rem),
+    linear-gradient(135deg, #f7f8fc 0%, #f0f0ff 100%);
+}
+
+.login-brand::before {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgb(96 84 232 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(96 84 232 / 5%) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: .4;
+  content: '';
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 70%), transparent 74%);
+}
+
+.login-brand > * {
+  position: relative;
+}
+
+.login-brand-mark,
+.console-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 28px;
+  color: #fff;
+  background: #6054e8;
+  border-radius: 12px;
+}
+
+.login-eyebrow {
+  margin-bottom: 14px;
+  color: #777887 !important;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.login-product-name.ant-typography {
+  max-width: 580px;
+  margin: 0 !important;
+  color: #252632;
+  font-size: clamp(44px, 5.4vw, 84px);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+
+.login-product-description.ant-typography {
+  max-width: 360px;
+  margin: 24px 0 0 !important;
+  color: #777887;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.login-trust-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  margin-top: 52px;
+  color: #777887;
+  font-size: 13px;
+}
+
+.login-trust-note svg {
+  color: #6054e8;
+}
+
+.login-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px clamp(32px, 7vw, 112px);
+  background: #ffffff;
+}
+
+.login-form-wrap {
+  width: min(100%, 388px);
+}
+
+.login-form-title.ant-typography {
+  margin: 0 !important;
+  color: #20212b;
+  font-size: 24px;
+  letter-spacing: -0.025em;
+}
+
+.login-error {
+  margin-top: 28px;
+}
+
+.login-form {
+  margin-top: 36px;
+}
+
+.login-form .ant-form-item {
+  margin-bottom: 21px;
+}
+
+.login-form .ant-form-item-label > label {
+  color: #4e525b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-form .ant-input,
+.login-form .ant-input-affix-wrapper {
+  min-height: 44px;
+  background: #fff;
+  border-color: #dfe0dc;
+  box-shadow: none;
+}
+
+.login-form .ant-input-affix-wrapper > .ant-input {
+  min-height: auto;
+}
+
+.login-form .ant-input:focus,
+.login-form .ant-input-affix-wrapper-focused {
+  border-color: #6054e8;
+  box-shadow: 0 0 0 3px rgb(96 84 232 / 12%);
+}
+
+.login-form .ant-btn-primary {
+  height: 46px;
+  margin-top: 8px;
+  font-weight: 650;
+  box-shadow: none;
+}
+
+.login-form .ant-btn-primary:not(:disabled):hover {
+  background: #5145d2;
+}
+
+/* 登录页仍随文档滚动；后台外壳固定在视口内，菜单和工作区各自承接滚动。 */
+.operations-shell {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background: #f7f8fa;
+}
+
+.operations-main {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.operations-sider {
+  height: 100%;
+  min-height: 0;
+}
+
+.operations-navigation-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.operations-sider .ant-layout-sider-children {
+  display: flex;
+  flex-direction: column;
+}
+
+.console-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 76px;
+  padding: 0 20px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.console-brand:focus-visible {
+  outline: 2px solid var(--ant-color-primary, #6054e8);
+  outline-offset: -4px;
+}
+
+.console-home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px;
+}
+
+#console-home-title {
+  text-wrap: balance;
+}
+
+.console-home-shortcut.ant-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  height: auto;
+  min-height: 76px;
+  padding: 16px;
+  text-align: left;
+  white-space: normal;
+}
+
+.console-home-shortcut-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: #8a8b99;
+}
+
+.console-home-shortcut-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 4px;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.console-home-shortcut-copy .ant-typography-secondary {
+  font-size: 12px;
+}
+
+.console-home-shortcut-arrow {
+  flex-shrink: 0;
+  color: #8a8b99;
+}
+
+.console-brand-mark {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.console-brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  color: #252632;
+  line-height: 1.2;
+}
+
+.console-brand-copy strong {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.console-brand-copy small {
+  margin-top: 2px;
+  color: #8a8b99;
+  font-size: 11px;
+}
+
+.operations-sider.ant-layout-sider-collapsed .console-brand {
+  justify-content: center;
+  padding: 0;
+}
+
+.operations-sider.ant-layout-sider-collapsed .console-brand-copy {
+  display: none;
+}
+
+.operations-sider .ant-menu {
+  padding: 4px 10px 20px;
+}
+
+.operations-sider .ant-menu-item-group-title {
+  padding-inline: 10px;
+  padding-top: 12px;
+  color: #8a8b99;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
+.operations-sider .ant-menu .ant-menu-item {
+  margin-inline: 0;
+  width: 100%;
+}
+
+.operations-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px !important;
+  background: #fff !important;
+  border-bottom: 1px solid #e7e9f0;
+}
+
+.operations-header > .ant-flex {
+  width: 100%;
+}
+
+.operations-header .ant-btn-text {
+  color: #4b4e56;
+}
+
+.operations-identity {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.operations-identity .ant-typography:first-child {
+  color: #25272d;
+  font-size: 14px;
+}
+
+.operations-identity .ant-typography:last-child {
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+/* 顶部应用上下文与账号并列，长名称收起时省略，展开后可查看完整标识。 */
+.operations-account {
+  min-width: 0;
+}
+
+.operations-application-switcher {
+  width: 200px;
+  height: 36px;
+}
+
+.operations-application-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.operations-application-label > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.operations-application-options .ant-select-item-option-content {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.operations-user {
+  flex-shrink: 0;
+  padding-left: 16px;
+  border-left: 1px solid #e7e9f0;
+}
+
+@media (max-width: 600px) {
+  .operations-header .operations-identity { display: none; }
+  .operations-account { gap: 8px !important; }
+  .operations-application-switcher { width: clamp(108px, 34vw, 200px); }
+  .operations-user { padding-left: 8px; }
+}
+
+.operations-content {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: radial-gradient(ellipse at 90% 0, rgba(119,102,242,.035), transparent 600px), #f7f8fa;
+}
+
+.workspace-surface.ant-card {
+  /* 保留圆角裁剪，同时让页面操作栏相对视口吸底。 */
+  overflow: clip;
+  background: #ffffff;
+  border: 1px solid #eceef3;
+  box-shadow: 0 8px 32px rgb(30 34 60 / 3%);
+}
+
+.workspace-surface .ant-card {
+  box-shadow: none;
+}
+
+.ant-btn-primary {
+  font-weight: 600;
+}
+
+.ant-drawer .ant-drawer-header {
+  border-bottom-color: #eceef3;
+}
+
+@media (max-width: 992px) {
+  .login-main {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(360px, 1fr);
+  }
+
+  .login-brand {
+    padding: 48px;
+  }
+
+  .operations-header {
+    padding: 0 12px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .login-main {
+    display: block;
+  }
+
+  .login-brand {
+    min-height: auto;
+    padding: 38px 28px 32px;
+  }
+
+  .login-brand-mark {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  .login-product-name.ant-typography {
+    font-size: 42px;
+  }
+
+  .login-product-description.ant-typography {
+    margin-top: 14px !important;
+    font-size: 14px;
+  }
+
+  .login-trust-note {
+    margin-top: 24px;
+  }
+
+  .login-panel {
+    min-height: calc(100vh - 303px);
+    padding: 48px 28px;
+  }
+
+  .operations-identity .ant-typography:last-child {
+    display: none;
+  }
+}
+
+/* 配置弹窗中的数值字段与同列文本输入保持对齐。 */
+.ant-modal .ant-input-number {
+  width: 100%;
+}
+
+/* 解锁规则编辑沿用统一主题；长 JSON 在弹窗内部滚动，移动端保留保存按钮。 */
+.unlock-strategy-editor .ant-modal { top: 20px; }
+.unlock-strategy-editor .ant-modal-body { max-height: calc(100dvh - 180px); overflow-y: auto; }
+.unlock-strategy-editor textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+/* 短剧工作区：状态与主操作优先，较长的平台细节按需展开。 */
+[data-ui="drama-catalog"],
+[data-ui="drama-editor"],
+[data-ui="publication-workspace"] {
+  color: #20212b;
+  font-size: 15px;
+  line-height: 1.65;
+  font-variant-numeric: tabular-nums;
+}
+[data-ui="drama-catalog"] .ant-typography-secondary,
+[data-ui="drama-editor"] .ant-typography-secondary,
+[data-ui="publication-workspace"] .ant-typography-secondary {
+  color: #777887;
+}
+[data-ui="drama-catalog"] h3,
+[data-ui="drama-editor"] h3,
+[data-ui="publication-workspace"] h3,
+[data-ui="publication-workspace"] h4 {
+  margin: 0;
+  text-wrap: balance;
+}
+[data-ui="drama-title"] {
+  height: auto;
+  padding: 0;
+  color: #20212b;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: normal;
+  text-align: left;
+  justify-content: flex-start;
+}
+[data-ui="drama-title"] > span { white-space: normal; }
+[data-ui="drama-catalog"] .ant-table-cell { padding-block: 10px; }
+[data-ui="drama-catalog"] .ant-table-cell .ant-avatar { flex: 0 0 auto; }
+[data-ui="drama-catalog"] .ant-table-cell [data-ui="drama-title"] { overflow-wrap: anywhere; }
+[data-ui="drama-catalog"] .ant-table-cell { font-variant-numeric: tabular-nums; }
+[data-ui="catalog-actions"] .ant-btn { white-space: nowrap; }
+[data-ui="catalog-actions"] .ant-btn-link { padding-inline: 0; }
+[data-ui="catalog-status"] .ant-btn-link {
+  align-self: flex-start;
+  height: auto;
+  padding: 2px 0 0;
+  font-size: 13px;
+}
+[data-ui="catalog-status"] .ant-tag { margin-inline-end: 0; }
+[data-ui="drama-filters"] .ant-select { width: 100%; }
+[data-ui="drama-editor"] .ant-tabs-nav { margin-bottom: 0; }
+[data-ui="drama-editor"] .ant-form-item-label > label { font-weight: 600; }
+[data-ui="drama-editor"] .ant-input:disabled,
+[data-ui="drama-editor"] .ant-select-disabled,
+[data-ui="drama-editor"] .ant-input-number-disabled {
+  color: #555b66;
+}
+[data-ui="drama-editor"] .ant-form-item-extra { color: #777887; }
+.episode-media-id {
+  max-width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+[data-ui="review-feedback"] { padding-block: 2px; }
+[data-ui="editor-actions"] {
+  padding-top: 12px;
+  border-top: 1px solid #e7e9f0;
+}
+[data-ui="publication-summary"] {
+  padding: 20px;
+  border: 1px solid #ddd2f5;
+  border-radius: 10px;
+  background: #f4efff;
+}
+[data-ui="publication-summary"][data-tone="warning"] { border-color: #ae731b; background: #fff8e9; }
+[data-ui="publication-summary"][data-tone="success"] { border-color: #278267; background: #edf7f2; }
+[data-ui="publication-summary"][data-tone="neutral"] { border-color: #777d88; background: #f4f5f6; }
+[data-ui="publication-summary"] h3,
+[data-ui="publication-summary"] h4 { margin: 10px 0 6px; font-size: 22px; }
+[data-ui="publication-summary"] .ant-typography { text-wrap: pretty; }
+[data-ui="publication-summary"] > .ant-typography:last-child { margin-bottom: 0; }
+[data-ui="publication-next-instruction"] {
+  display: block;
+  font-weight: 600;
+}
+[data-ui="publication-context"] {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eceef3;
+}
+[data-ui="publication-context"] .ant-tag { margin-inline-end: 8px; }
+[data-ui="publication-workflow"] { padding: 2px 4px 6px; }
+[data-ui="publication-current"] .ant-steps-item-description {
+  max-width: 180px;
+  color: #777887;
+  font-size: 12px;
+  line-height: 1.45;
+}
+[data-ui="publication-media"] {
+  padding-block: 4px 16px;
+  border-bottom: 1px solid #e7e9f0;
+}
+[data-ui="publication-media"] .ant-typography { margin-bottom: 4px; }
+[data-ui="publication-media"] .ant-flex > div { flex: 1; }
+[data-ui="publication-media"] strong { font-size: 20px; font-weight: 600; }
+[data-ui="publication-workspace"] .ant-collapse-header { padding-inline: 0; font-weight: 600; }
+[data-ui="publication-workspace"] .ant-collapse-body { padding-inline: 0; }
+[data-ui="publication-workspace"] .ant-descriptions-item-content { overflow-wrap: anywhere; }
+[data-ui="publication-workspace"] > .ant-btn { align-self: flex-start; min-height: 40px; }
+[data-ui="distribution-panel"] {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 4px;
+  border-top: 1px solid #e7e9f0;
+}
+[data-ui="distribution-header"] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+[data-ui="distribution-header"] h5 { margin: 0 0 4px; font-size: 16px; }
+[data-ui="distribution-header"] .ant-typography { margin-bottom: 0; }
+[data-ui="distribution-select-all"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-inline: 16px;
+}
+[data-ui="distribution-list"] {
+  overflow: hidden;
+  border: 1px solid #e5deef;
+  border-radius: 10px;
+}
+[data-ui="distribution-row"] {
+  padding: 14px 16px;
+  background: #fff;
+  border-bottom: 1px solid #eceef3;
+}
+[data-ui="distribution-row"]:last-child { border-bottom: 0; }
+[data-ui="distribution-row"][data-selected="true"] { background: #f8f8ff; }
+[data-ui="publication-version-actions"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e7e9f0;
+}
+[data-ui="publication-version-actions"] .ant-typography { margin-bottom: 0; }
+@media (max-width: 600px) {
+  [data-ui="publication-summary"] { padding: 16px; }
+  [data-ui="publication-summary"] h3 { font-size: 22px; }
+  [data-ui="publication-workspace"] > .ant-btn { width: 100%; }
+  [data-ui="distribution-header"],
+  [data-ui="publication-version-actions"] { flex-direction: column; align-items: stretch; }
+  [data-ui="distribution-header"] > .ant-space,
+  [data-ui="publication-version-actions"] > .ant-space { width: 100%; }
+  [data-ui="distribution-header"] .ant-btn-primary { flex: 1; }
+  [data-ui="distribution-row"] { padding: 14px; }
+  [data-ui="drama-editor"] .ant-tabs-tab { margin-inline-start: 0; }
+  [data-ui="drama-editor"] .ant-tabs-nav-list { gap: 20px; }
+  [data-ui="editor-actions"] .ant-space { width: 100%; }
+}
+[data-ui="drama-catalog"] .ant-divider { margin-block: 8px; }
+[data-ui="drama-catalog"] .ant-tag { align-self: flex-start; }
+[data-ui="drama-mobile-list"] { margin: 0; padding: 0; list-style: none; }
+[data-ui="drama-mobile-list"] > li { display: flex; flex-direction: column; gap: 12px; padding-block: 12px; border-bottom: 1px solid #e7e9f0; }
+[data-ui="drama-mobile-list"] > li:first-child { padding-top: 0; }
+[data-ui="drama-mobile-list"] + .ant-pagination { margin-top: 20px; }
+
+/* 图表按容器宽度绘制，固定纵向高度，避免宽屏把图表与文字同步放大。 */
+[aria-labelledby="analytics-dashboard-title"] .ant-row .ant-card { height: 100%; }
+[aria-labelledby="analytics-dashboard-title"] figure { margin: 0; }
+[aria-labelledby="analytics-dashboard-title"] figure svg { width: 100%; height: 240px; display: block; }
+
+/* 官方英文标签可能较长，分类选择器在窄屏内换行。 */
+[aria-label="TikTok 分类"] > button { max-width: 100%; height: auto; min-height: 36px; white-space: normal; }
+
+[data-ui="tiktok-tag-search"] { width: 360px; max-width: 100%; }
+[data-ui="tiktok-tag-error"] { margin-bottom: 16px; }
+[data-ui="tiktok-tag-count"] { font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 767px) {
+  [aria-label="TikTok 分类"] { max-height: 260px; overflow-y: auto; padding: 4px; }
+}
+
+/* 剧创风格工作台：中性侧栏与白色顶栏分层，淡紫选中态和蓝紫主操作保持一致。 */
+.operations-sider { border-right: 1px solid #e4e6ee; }
+.operations-sider .ant-menu { border-inline-end: 0 !important; }
+.operations-sider .ant-menu-item-selected { font-weight: 600; }
+.console-brand { height: 64px; }
+.console-brand-mark { color: #fff; background: linear-gradient(135deg, #a49af9, #6054e8); border-radius: 50%; box-shadow: 0 4px 12px rgb(96 84 232 / 12%); }
+.console-brand-copy strong { font-size: 19px; letter-spacing: -.04em; }
+.operations-header { background: #fff !important; border-bottom-color: #e7e9f0; }
+.operations-header .ant-select-selector { background: #fff !important; }
+.workspace-surface.ant-card { margin: 24px; min-height: calc(100dvh - 112px); border-radius: 16px; border-color: #e8eaf1; }
+.workspace-surface > .ant-card-body { padding: 28px; }
+[data-ui="page-header"] { padding-bottom: 12px; }
+[data-ui="page-header"] h3.ant-typography { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.025em; }
+[data-ui="page-header"] .ant-divider { margin: 14px 0 0; border-color: #eceef3; }
+.ant-table-wrapper .ant-table-thead > tr > th { font-weight: 500; font-size: 12px; }
+.ant-table-wrapper .ant-table-tbody > tr > td { border-bottom-color: #eff0f5; }
+/* 仅品牌主按钮使用渐变，删除等危险动作保留 Ant Design 的语义红色。 */
+.ant-btn-primary:not(.ant-btn-dangerous):not(:disabled) {
+  border-color: transparent;
+  background: linear-gradient(105deg, #2760f5, #7938f2);
+  box-shadow: 0 3px 8px rgb(96 84 232 / 14%);
+}
+.ant-btn-primary:not(.ant-btn-dangerous):not(:disabled):hover { background: linear-gradient(105deg, #2054dd, #692ddc); }
+.ant-btn-primary:not(.ant-btn-dangerous):not(:disabled):active { background: linear-gradient(105deg, #1946c3, #5b25c6); }
+.ant-form-item-label > label { font-weight: 500; }
+.ant-input:focus-visible, .ant-btn:focus-visible { outline: 3px solid #a49bf3; outline-offset: 3px; }
+/* 翻译弹窗为焦点和说明预留间距，避免全局外扩描边覆盖辅助文字。 */
+.tag-translation-modal .ant-modal-body { padding-block: 12px 8px; }
+.tag-translation-modal .ant-form { display: flex; flex-direction: column; gap: 20px; }
+.tag-translation-modal .tag-translation-source { line-height: 1.6; overflow-wrap: anywhere; }
+.tag-translation-modal .ant-form-item { margin-bottom: 0; }
+.tag-translation-modal .ant-form-item-extra { margin-top: 8px; font-size: 12px; line-height: 1.6; }
+/* 沿用 Ant Design 的聚焦边框与阴影，不再叠加第二圈全局轮廓。 */
+.tag-translation-modal .ant-input:focus-visible { outline: none; }
+[data-ui="dashboard-filters"] { padding: 10px 12px; background: #f8f9fc; border: 1px solid #eceef3; border-radius: 12px; }
+[data-ui="postback-log-filters"] { padding: 10px 12px; background: #f8f9fc; border: 1px solid #eceef3; border-radius: 12px; }
+[data-ui="postback-log-filters"] .ant-select { min-width: 200px; }
+[data-ui="dashboard-filters"] label { font-size: 12px; color: #777887; }
+[data-ui="dashboard-hero"] .ant-card { border: 0; background: #f8f9fc; }
+[data-ui="dashboard-hero"] .ant-col:first-child .ant-card { background: linear-gradient(120deg, #efedff, #f9f9ff); }
+[data-ui="dashboard-hero"] .ant-statistic-content { font-size: 28px; font-weight: 600; letter-spacing: -.04em; color: #292638; }
+[data-ui="dashboard-hero"] .ant-typography-secondary,
+[data-ui="dashboard-metrics"] .ant-typography-secondary { font-size: 12px; line-height: 1.5; display: block; margin-top: 4px; }
+[data-ui="dashboard-metrics"] .ant-statistic-content { font-size: 24px; font-weight: 550; font-variant-numeric: tabular-nums; }
+[data-ui="dashboard-metrics"] .ant-statistic-content-suffix { font-size: 12px; font-weight: 400; color: #777887; }
+[data-ui="dashboard-trend"] { border-color: #e7e9f0; }
+[data-ui="dashboard-trend"] .ant-card-head { border-bottom: 0; }
+/* 指标名称最长为七个汉字；预留箭头、内边距和滚动条，避免按当前短名称收缩。 */
+[data-ui="dashboard-trend"] .ant-card-extra .ant-select { width: 220px; max-width: 100%; }
+[data-ui="dashboard-trend"] figure { color: #777887; }
+[data-ui="dashboard-trend"] figcaption { font-size: 12px; margin-bottom: 6px; }
+[data-ui="dashboard-trend"] summary { cursor: pointer; color: #6054e8; font-size: 13px; padding-block: 8px; }
+[data-ui="dashboard-trend"] circle:focus { outline: 2px solid #5145d2; outline-offset: 3px; }
+[data-ui="dashboard-methodology"] { background: #f8f9fc; border-color: transparent; }
+[data-ui="drama-catalog"] .ant-image img { border-radius: 8px; box-shadow: 0 3px 9px rgb(49 30 79 / 10%); }
+@media (max-width: 760px) {
+  .workspace-surface.ant-card { margin: 12px; min-height: calc(100dvh - 88px); border-radius: 12px; }
+  .workspace-surface > .ant-card-body { padding: 18px; }
+  [data-ui="page-header"] h3.ant-typography { font-size: 23px; }
+  [data-ui="dashboard-filters"] { padding: 12px; }
+  [data-ui="dashboard-hero"] .ant-statistic-content { font-size: 29px; }
+  [data-ui="dashboard-trend"] .ant-card-head-wrapper { align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+  [data-ui="dashboard-trend"] .ant-card-head-title { flex-basis: 100%; }
+  [data-ui="dashboard-trend"] .ant-card-extra { margin-inline-start: 0; width: 100%; max-width: 100%; }
+  [data-ui="dashboard-trend"] .ant-card-extra .ant-select { width: 100%; }
+}
+
+/* 发布工作区沿用紧凑布局，内容信息与平台操作在同页呈现。 */
+[data-ui="publication-page"] { outline: none; }
+[data-ui="publication-current"] .ant-flex > .ant-btn { align-self: flex-start; }
+[data-ui="publication-current"] .ant-form { max-width: 560px; }
+
+/* 发布操作沿用现有表单与按钮，窄屏换行，不展开完整任务流程。 */
+[data-ui="publication-current"] .ant-form[data-ui="publication-actions"] { max-width: none; gap: 12px; align-items: center; }
+[data-ui="publication-actions"] .ant-form-item { margin: 0; }
+[data-ui="publication-actions"] .ant-select { min-width: 132px; }
+
+/* 列内文字链接与表头共用左边界，固定列布局让多项操作在本列换行。 */
+[data-ui="official-publication-list"] .official-publication-link.ant-btn {
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  border: 0;
+  justify-content: flex-start;
+  text-align: left;
+  white-space: normal;
+}
+
+/* 长整数 ID 保持原文和等宽数字，移动端的人员信息可换行。 */
+[data-ui="drama-id"] { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+[data-ui="drama-operators"] { min-width: 0; overflow-wrap: anywhere; }
+
+/* 窄屏范围日历纵向排列，起止月份均能完整选择。 */
+@media (max-width: 600px) {
+  .ant-picker-dropdown-range .ant-picker-panels { flex-direction: column; }
+  .ant-picker-dropdown-range .ant-picker-panel-container { max-height: calc(100dvh - 100px); overflow-y: auto; }
+}
+.ad-unit-list { margin-bottom: 24px; }
+.ad-unit-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.ad-unit-row > .ant-form-item { flex: 1; min-width: 0; margin-bottom: 0; }
+.ad-unit-remove { flex: none; margin-top: 30px; }
+
+/* 应用选择和账号入口对应参考页的轻量工具栏，不增加新的业务入口。 */
+.operations-application-switcher { height: 36px; }
+.operations-application-switcher .ant-select-selector { border-color: #e2e4eb; border-radius: 8px; }
+.operations-user-avatar { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 32px; width: 32px; height: 32px; border: 3px solid #fff; border-radius: 50%; color: #6054e8; background: #eeedfc; font-size: 13px; font-weight: 600; box-shadow: 0 2px 8px rgb(38 35 80 / 6%); }
+.workspace-surface .ant-avatar { color: #8275c9; background: #eeedf7; }
+.operations-navigation-drawer .ant-drawer-body { padding: 12px; background: #f7f8fa; }
+.operations-navigation-drawer .ant-menu { border-inline-end: 0; }
+.operations-sider .ant-menu-submenu-title { color: #777887; font-size: 13px; }
+.operations-sider .ant-layout-sider-trigger { border-top: 1px solid #e7e9f0; }
+[data-ui="drama-filters"] { margin-inline: 0 !important; padding: 14px 8px; border: 1px solid #eceef3; border-radius: 10px; background: #f8f9fc; }
+.ant-table-wrapper .ant-table-container { overflow: clip; border: 1px solid #eceef3; border-radius: 10px; }
+[data-ui="drama-mobile-list"] > li { margin-top: 12px; padding: 16px; border: 1px solid #eceef3; border-radius: 12px; background: #fff; }
+[data-ui="drama-mobile-list"] > li:first-child { padding-top: 16px; }
+@media (max-width: 600px) {
+  .operations-user-avatar { display: none; }
+  .workspace-surface.ant-card { margin: 8px; min-height: calc(100dvh - 80px); }
+  .workspace-surface > .ant-card-body { padding: 16px; }
+  [data-ui="page-header"] h3.ant-typography { font-size: 22px; }
+}
+
+/* 主体与应用作为同一组上下文；窄屏换行，保留键盘焦点与账号操作空间。 */
+.operations-subject-switcher { width: 160px; min-width: 0; height: 36px; }
+@media (max-width: 760px) {
+  .operations-header { height: auto; min-height: 64px; padding-top: 12px !important; padding-bottom: 12px !important; }
+  .operations-account { flex-wrap: wrap; justify-content: flex-end; gap: 8px !important; }
+  .operations-subject-switcher { width: 120px; }
+  .operations-application-switcher { width: 150px; }
+  .operations-header > .ant-flex { gap: 8px; }
+  .operations-header .operations-identity { display: none; }
+}

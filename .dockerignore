@@ -1,0 +1,12 @@
+.git
+node_modules
+dist
+*.log
+# 本机覆盖和私有凭据不进入构建上下文。
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx
